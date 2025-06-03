@@ -436,6 +436,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			{
 				nozzle = 0;
 			}
+                        else if(uart_rx2 == 'h' )                      //Health check
+                        {
+                                sprintf(tx_data,"OK\r\n");
+                                HAL_UART_Transmit(&huart3,(uint8_t*)tx_data,strlen(tx_data),10);
+                        }
 			else
 			{
 			  receive_buffer2[range++] = receive2;
